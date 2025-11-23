@@ -4,11 +4,11 @@ import { Cart } from './components/cart'
 import { addCart } from './redux/slice'
 import { useEffect } from 'react'
 import { fetchPosts } from './redux/fetchProductSlice'
+import { InfiniteScroll } from './components/InfiniteScroll'
 
 function App() {
 const dispatch = useDispatch()
 const allProducts = useSelector((state)=>state.post)
-console.log(allProducts)
 useEffect(()=>{
   dispatch(fetchPosts())
 },[])
@@ -20,6 +20,7 @@ useEffect(()=>{
      {/* <div className="">
       {allProducts}
      </div> */}
+     <InfiniteScroll allProducts={allProducts}/>
     </>
   )
 }
